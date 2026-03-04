@@ -3,371 +3,338 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Архитектор Развития | ИИ-Агент для Гимназии В.В. Давыдова</title>
-    <!-- Tailwind CSS -->
+    <title>Презентация: Архитектор Развития</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.0/mermaid.min.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700;800&display=swap');
         
         body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #f8f9fa;
-            color: #333;
+            font-family: 'Onest', sans-serif;
+            background-color: #ffffff;
+            color: #1a1a1a;
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
 
-        .amber-accent { color: #f59e0b; }
-        .bg-amber-accent { background-color: #f59e0b; }
-        
-        .deep-blue-accent { color: #1e3a8a; }
-        .bg-deep-blue-accent { background-color: #1e3a8a; }
+        /* Fluid Typography & Spacing */
+        .section-padding { padding: 8rem 2rem; }
+        @media (max-width: 768px) { .section-padding { padding: 4rem 1.5rem; } }
 
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
-            border-radius: 1rem;
-        }
-
-        .hero-bg {
-            background: linear-gradient(135deg, #1e3a8a 0%, #172554 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-bg::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: url('https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&q=80&w=2000') center/cover;
-            opacity: 0.15;
-            mix-blend-mode: luminosity;
-        }
-
-        .section-fade {
+        /* Animations */
+        .fade-up {
             opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s ease-out;
+            transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
         }
-
-        .section-fade.visible {
+        .fade-up.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        .card-hover {
-            transition: all 0.3s ease;
+        .fade-in {
+            opacity: 0;
+            transition: opacity 1.5s ease-out;
         }
-        
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        .fade-in.visible { opacity: 1; }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.95);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
         }
 
-        .timeline-item::before {
-            content: '';
+        /* Decorative Elements */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 1.5rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+            transition: transform 0.3s ease;
+        }
+        .glass-card:hover { transform: translateY(-5px); }
+
+        .divider-slide {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 50vh;
+        }
+
+        .blob {
             position: absolute;
-            left: -11px;
-            top: 6px;
-            height: 20px;
-            width: 20px;
             border-radius: 50%;
-            background-color: #f59e0b;
-            border: 4px solid white;
-            box-shadow: 0 0 0 2px #f59e0b;
+            filter: blur(80px);
+            opacity: 0.5;
+            z-index: 0;
+            animation: float 10s infinite ease-in-out alternate;
+        }
+        .blob-1 { background: #dbeafe; width: 400px; height: 400px; top: -100px; left: -100px; }
+        .blob-2 { background: #fef3c7; width: 300px; height: 300px; bottom: -50px; right: -50px; animation-delay: -5s; }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(30px, 50px) scale(1.1); }
+        }
+
+        .image-shadow {
+            border-radius: 1.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
         }
     </style>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        amber: { 500: '#f59e0b', 600: '#d97706' },
-                        blue: { 800: '#1e40af', 900: '#1e3a8a', 950: '#172554' }
-                    }
-                }
-            }
-        }
-    </script>
 </head>
-<body class="antialiased selection:bg-amber-500 selection:text-white">
+<body class="antialiased selection:bg-amber-200 selection:text-black">
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 glass-panel py-4 px-6 border-b border-gray-100/50 hidden md:block" style="border-radius: 0; top: 0;">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="font-bold text-xl deep-blue-accent tracking-wide">
-                <i class="fa-solid fa-brain mr-2 amber-accent"></i> Архитектор Развития
-            </div>
-            <div class="space-x-8 text-sm font-medium text-gray-600">
-                <a href="#vision" class="hover:text-amber-500 transition">Концепция</a>
-                <a href="#architecture" class="hover:text-amber-500 transition">Архитектура</a>
-                <a href="#philosophy" class="hover:text-amber-500 transition">Философия Давыдов 2.0</a>
-                <a href="#phases" class="hover:text-amber-500 transition">Внедрение</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero-bg min-h-screen flex items-center pt-20 px-6">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
-            <div class="text-white space-y-6">
-                <div class="inline-block px-4 py-1 rounded-full border border-amber-500/50 bg-amber-500/10 text-amber-400 text-sm font-semibold tracking-wide backdrop-blur-sm">
-                    ГИМНАЗИЯ ИМ. В.В. ДАВЫДОВА • ВИДЕНИЕ 2035
+    <!-- HERO SECTION -->
+    <section class="min-h-screen flex items-center justify-center relative bg-white pb-20 pt-10">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        
+        <div class="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10 w-full mb-20 fade-up visible">
+            <div class="space-y-8">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-blue-600 text-sm font-semibold tracking-wide border border-blue-100">
+                    <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+                    Проект 2026
                 </div>
-                <h1 class="text-5xl md:text-6xl font-bold leading-tight">
-                    Интеллектуальный <br>
-                    <span class="text-amber-500">мозг</span> экосистемы
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight">
+                    Архитектор<br>
+                    <span class="text-amber-500">Развития</span>
                 </h1>
-                <p class="text-xl text-blue-100/80 font-light leading-relaxed max-w-lg">
-                    Проактивная мультиагентная система, которая берет на себя 90% образовательной рутины, оставляя учителю пространство для фасилитации живого человеческого мышления.
+                <p class="text-xl text-gray-500 leading-relaxed font-light max-w-lg">
+                    Мультиагентная ИИ-система для Гимназии им. В.В. Давыдова. Невидимый слой управления, освобождающий время для живого мышления.
                 </p>
-                <div class="pt-4 flex gap-4">
-                    <a href="#vision" class="px-8 py-3 bg-amber-500 hover:bg-amber-600 text-white font-semibold rounded-lg transition shadow-lg shadow-amber-500/30">
-                        Исследовать концепт
-                    </a>
-                    <a href="#phases" class="px-8 py-3 glass-panel text-white hover:text-amber-400 font-semibold rounded-lg transition border border-white/20">
-                        Дорожная карта
+                <div class="pt-4">
+                    <a href="#logic-1" class="inline-flex items-center gap-3 px-8 py-4 bg-gray-900 text-white rounded-full font-medium hover:bg-gray-800 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1 duration-300">
+                        Погрузиться в логику <i class="fa-solid fa-arrow-down animate-bounce"></i>
                     </a>
                 </div>
             </div>
-            <div class="hidden md:block">
-                <!-- Abstract Representation of AI Brain -->
-                <div class="relative w-full aspect-square max-w-md mx-auto">
-                    <div class="absolute inset-0 bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
-                    <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800&q=80" alt="AI Abstract" class="rounded-full w-full h-full object-cover border-4 border-white/10 shadow-2xl mix-blend-overlay">
-                </div>
+            <div class="relative scale-in visible">
+                <img src="assets/hero.png" alt="Холистическое видение" class="w-full h-auto image-shadow object-cover bg-white p-2">
             </div>
         </div>
     </section>
 
-    <!-- Core Vision -->
-    <section id="vision" class="py-24 px-6 section-fade">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold deep-blue-accent mb-4">Ответ на вызовы современного образования</h2>
-                <div class="w-24 h-1 bg-amber-500 mx-auto rounded-full"></div>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="glass-panel p-8 card-hover">
-                    <div class="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center text-blue-800 text-2xl mb-6">
-                        <i class="fa-solid fa-users-viewfinder"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Скаутинг Возможностей</h3>
-                    <p class="text-gray-600 leading-relaxed text-sm">
-                        Агент-разведчик непрерывно мониторит платформы (гранты.рф) и сопоставляет их с цифровым двойником школы. Агент-стратег автоматически генерирует пред-заявки, обеспечивая финансовую устойчивость частной гимназии.
-                    </p>
-                </div>
-                <div class="glass-panel p-8 card-hover relative overflow-hidden">
-                    <div class="absolute -right-4 -top-4 w-24 h-24 bg-amber-50 rounded-full blur-xl z-0"></div>
-                    <div class="relative z-10">
-                        <div class="w-14 h-14 rounded-xl bg-amber-50 flex items-center justify-center text-amber-500 text-2xl mb-6">
-                            <i class="fa-solid fa-brain"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">Снятие Когнитивной Перегрузки</h3>
-                        <p class="text-gray-600 leading-relaxed text-sm">
-                            Благодаря интеграции генеративных сетей (LLM), 90% бюрократических процессов, проверки типовых заданий и аналитики успеваемости переносится на ИИ. Учитель возвращается к своей истинной роли.
-                        </p>
-                    </div>
-                </div>
-                <div class="glass-panel p-8 card-hover">
-                    <div class="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center text-blue-800 text-2xl mb-6">
-                        <i class="fa-solid fa-shield-halved"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Суверенитет Данных</h3>
-                    <p class="text-gray-600 leading-relaxed text-sm">
-                        Соблюдение ФЗ-152 за счет использования локальных Self-hosted моделей (Llama 3 / Mistral). Ни один байт персональных данных учеников не уходит в корпоративные облака.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Architecture: Multi-Agent System -->
-    <section id="architecture" class="py-24 px-6 bg-white section-fade">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div>
-                    <h2 class="text-3xl font-bold deep-blue-accent mb-6">Мультиагентная Оркестрация</h2>
-                    <p class="text-gray-600 mb-8 leading-relaxed">
-                        Вместо одного "всезнающего" чат-бота, проект базируется на роевом взаимодействии узкоспециализированных ИИ-агентов. Оркестратор на базе <strong>LangGraph</strong> управляет глобальной памятью и процессом, пока узлы компетенций на базе <strong>CrewAI</strong> решают конкретные задачи.
-                    </p>
-                    
-                    <div class="space-y-6">
-                        <div class="flex gap-4 items-start">
-                            <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-800 shrink-0 mt-1">
-                                <i class="fa-solid fa-satellite-dish"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-800">Агент-Скаут</h4>
-                                <p class="text-sm text-gray-500">Непрерывный мониторинг внешней среды, грантов и законов.</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-4 items-start">
-                            <div class="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center text-amber-600 shrink-0 mt-1">
-                                <i class="fa-solid fa-chart-line"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-800">Агент-Аналитик</h4>
-                                <p class="text-sm text-gray-500">Выявляет аномалии в цифровом двойнике, прогнозирует выгорание преподавателей.</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-4 items-start">
-                            <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-800 shrink-0 mt-1">
-                                <i class="fa-solid fa-chess-knight"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-800">Агент-Стратег</h4>
-                                <p class="text-sm text-gray-500">Синтезирует решения, генерирует черновики проектов и индивидуальные траектории (RAG).</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="glass-panel p-6 shadow-xl relative">
-                    <div class="absolute top-4 right-4 flex gap-2">
-                        <span class="w-3 h-3 rounded-full bg-red-400"></span>
-                        <span class="w-3 h-3 rounded-full bg-amber-400"></span>
-                        <span class="w-3 h-3 rounded-full bg-green-400"></span>
-                    </div>
-                    <div class="mt-8 overflow-hidden rounded bg-gray-50/50 p-2">
-                        <div class="mermaid text-center" style="background: transparent;">
-graph TD
-    User((Пользователь)) <-->|Запрос/Инсайт| LangGraph{Оркестратор}
-    LangGraph -->|Маршрутизация| CrewAI_1[Узел Аналитики]
-    LangGraph -->|Сбор данных| CrewAI_2[Узел Скаутинга]
-    CrewAI_1 <--> DB[(Цифровой<br>Двойник)]
-    CrewAI_2 <--> Web((Внешний<br>Мир))
-    DB -.->|RAG вектор| LangGraph
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Philosophy: Davydov 2.0 -->
-    <section id="philosophy" class="py-24 px-6 hero-bg section-fade text-white relative">
-        <div class="max-w-4xl mx-auto text-center relative z-10">
-            <h2 class="text-3xl font-bold text-amber-500 mb-6">Методология «Давыдов 2.0»</h2>
-            <p class="text-xl font-light leading-relaxed mb-12 text-blue-100/90">
-                Генеративный ИИ в стандарте стремится дать быстрый ответ. В системе Эльконина-Давыдова это строго запрещено. Мы перепрограммируем ИИ в генератор <strong>когнитивного тупика (апории)</strong>.
+    <!-- DIVIDER 1: THE PROBLEM -->
+    <section id="logic-1" class="divider-slide section-padding">
+        <div class="max-w-4xl mx-auto z-10 fade-up">
+            <h4 class="text-amber-500 font-bold tracking-widest uppercase mb-4 text-sm">Введение в проблематику</h4>
+            <h2 class="text-3xl md:text-4xl font-semibold leading-tight text-gray-900 mb-6">
+                Как управлять сложной образовательной средой без выгорания?
+            </h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                Современная школа — это хаос данных, расписаний и грантов. Традиционные ИИ (ChatGPT) работают как "всезнающие оракулы" и быстро теряют контекст в сложных процессах. Нам нужен другой подход.
             </p>
-            
-            <div class="grid sm:grid-cols-2 gap-6 text-left">
-                <div class="bg-blue-900/50 backdrop-blur border border-blue-400/20 p-6 rounded-xl">
-                    <div class="text-amber-400 font-bold mb-2">1. Эленхус</div>
-                    <p class="text-sm text-blue-100/80">Если ученик дает уверенный, но поверхностный ответ, ИИ не исправляет его, а задает контрвопрос, доводящий гипотезу до абсурда.</p>
-                </div>
-                <div class="bg-blue-900/50 backdrop-blur border border-blue-400/20 p-6 rounded-xl">
-                    <div class="text-amber-400 font-bold mb-2">2. Апория</div>
-                    <p class="text-sm text-blue-100/80">Введение неочевидных фактов, разрушающих выстроенную учениками логику для стимуляции перехода на более высокий уровень абстракции.</p>
+        </div>
+    </section>
+
+    <!-- SECTION 1: ARCHITECTURE -->
+    <section class="section-padding bg-white relative">
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+            <div class="order-2 lg:order-1 scale-in">
+                <img src="assets/architecture.png" alt="Архитектура" class="w-full h-auto image-shadow bg-blue-50/30 p-4">
+            </div>
+            <div class="order-1 lg:order-2 fade-up space-y-6">
+                <h2 class="text-4xl font-bold tracking-tight">Роевой Интеллект</h2>
+                <p class="text-lg text-gray-600">Мы разделяем задачи (LangGraph + CrewAI). Один агент не может делать всё. Мы создаем оркестр:</p>
+                
+                <div class="space-y-4 pt-4">
+                    <div class="glass-card p-6 flex gap-4 items-start">
+                        <div class="w-12 h-12 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center shrink-0"><i class="fa-solid fa-satellite-dish"></i></div>
+                        <div>
+                            <h3 class="font-bold text-gray-900 text-lg">Агент-Скаут</h3>
+                            <p class="text-gray-500 text-sm mt-1">Осматривает внешний мир, ищет гранты, анализирует новые законы.</p>
+                        </div>
+                    </div>
+                    <div class="glass-card p-6 flex gap-4 items-start">
+                        <div class="w-12 h-12 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center shrink-0"><i class="fa-solid fa-chart-line"></i></div>
+                        <div>
+                            <h3 class="font-bold text-gray-900 text-lg">Агент-Аналитик</h3>
+                            <p class="text-gray-500 text-sm mt-1">Ищет аномалии внутри школы, прогнозирует когнитивную нагрузку.</p>
+                        </div>
+                    </div>
+                    <div class="glass-card p-6 flex gap-4 items-start">
+                        <div class="w-12 h-12 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center shrink-0"><i class="fa-solid fa-chess-knight"></i></div>
+                        <div>
+                            <h3 class="font-bold text-gray-900 text-lg">Агент-Стратег</h3>
+                            <p class="text-gray-500 text-sm mt-1">Синтезирует инсайты, формирует заявки и расписания.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Implementation Roadmap -->
-    <section id="phases" class="py-24 px-6 section-fade">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold deep-blue-accent mb-4">Прагматичная стратегия внедрения</h2>
-                <div class="w-24 h-1 bg-amber-500 mx-auto rounded-full"></div>
-                <p class="mt-6 text-gray-600">Переход от Proprietary-First (Wow-эффект) к полному технологическому суверенитету (Open Source).</p>
+    <!-- DIVIDER 2: DIGITAL TWIN -->
+    <section class="divider-slide section-padding">
+        <div class="max-w-4xl mx-auto z-10 fade-up">
+            <h4 class="text-blue-600 font-bold tracking-widest uppercase mb-4 text-sm">Слой Данных</h4>
+            <h2 class="text-3xl md:text-4xl font-semibold leading-tight text-gray-900 mb-6">
+                Чтобы лечить организм, нужно знать его анатомию.
+            </h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                Рой агентов бесполезен без четкой карты реальности. Поэтому фундамент системы — это полностью оцифрованная структура связей гимназии.
+            </p>
+        </div>
+    </section>
+
+    <!-- SECTION 2: DIGITAL TWIN & SCOUTING -->
+    <section class="section-padding bg-white relative">
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+            <div class="fade-up space-y-8">
+                <div>
+                    <h2 class="text-4xl font-bold tracking-tight mb-4">Цифровой Двойник</h2>
+                    <p class="text-lg text-gray-600">
+                        Гимназия (191 ученик, 31 педагог) представлена как динамический двунаправленный граф. Система видит не просто оценки, а связи. Изменение расписания учителя физики мгновенно просчитывается на предмет выгорания конкретных классов.
+                    </p>
+                </div>
+                
+                <div class="h-px bg-gray-200 w-full"></div>
+                
+                <div>
+                    <h2 class="text-4xl font-bold tracking-tight mb-4">Непрерывный Фандрайзинг</h2>
+                    <p class="text-lg text-gray-600">
+                        Собрав данные двойника, <span class="font-semibold text-amber-600">Агент-Скаут</span> автономно "матчит" профиль гимназии с порталом гранты.рф. Система сама находит возможности и кладет директору на стол готовый черновик грантовой заявки.
+                    </p>
+                </div>
             </div>
-
-            <div class="max-w-4xl mx-auto relative pl-8 border-l-2 border-blue-100 space-y-12">
-                
-                <div class="relative timeline-item">
-                    <div class="glass-panel p-6 shadow-md border-l-4 border-l-amber-500">
-                        <div class="flex justify-between items-center mb-4">
-                            <h3 class="text-xl font-bold">Фаза 0: Demo-Wow & Первый Контакт</h3>
-                            <span class="text-xs font-bold px-3 py-1 bg-blue-50 text-blue-800 rounded-full">Месяц 1</span>
-                        </div>
-                        <p class="text-gray-600 text-sm mb-4">Использование проприетарных моделей (Claude 3.5, GPT-4o) на строго анонимизированных синтетических данных. Цель — преодолеть скепсис коллектива, показав магию ИИ (генерация гранта за 10 минут).</p>
-                        <div class="flex gap-2">
-                            <span class="text-xs px-2 py-1 bg-gray-100 rounded text-gray-600"><i class="fa-solid fa-cloud mr-1"></i> SaaS API</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="relative timeline-item">
-                    <div class="glass-panel p-6 shadow-md border-l-4 border-l-amber-500">
-                        <div class="flex justify-between items-center mb-4">
-                            <h3 class="text-xl font-bold">Фаза 1: Рабочий прототип (Теневой режим)</h3>
-                            <span class="text-xs font-bold px-3 py-1 bg-blue-50 text-blue-800 rounded-full">Месяцы 2-6</span>
-                        </div>
-                        <p class="text-gray-600 text-sm mb-4">Запуск цифрового двойника. Использование гибридной архитектуры (LiteLLM) для маршрутизации. Формирование базы знаний гимназии.</p>
-                    </div>
-                </div>
-
-                <div class="relative timeline-item">
-                    <div class="glass-panel p-6 shadow-md border-l-4 border-l-amber-500">
-                        <div class="flex justify-between items-center mb-4">
-                            <h3 class="text-xl font-bold">Фаза 2: Суверенный MVP</h3>
-                            <span class="text-xs font-bold px-3 py-1 bg-blue-50 text-blue-800 rounded-full">Месяцы 7-12</span>
-                        </div>
-                        <p class="text-gray-600 text-sm mb-4">Закупка локальных серверов (GPU контур). Развертывание <strong>Llama 3 (70B)</strong> в локальной сети гимназии. Полное обеспечение ФЗ-152, отключение от западных API для критических данных.</p>
-                        <div class="flex gap-2">
-                            <span class="text-xs px-2 py-1 bg-green-50 text-green-700 rounded"><i class="fa-solid fa-server mr-1"></i> Self-Hosted</span>
-                            <span class="text-xs px-2 py-1 bg-amber-50 text-amber-700 rounded"><i class="fa-solid fa-scale-balanced mr-1"></i> ФЗ-152 Compliance</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="relative timeline-item">
-                    <div class="glass-panel p-6 shadow-md border-l-4 border-l-amber-500">
-                        <div class="flex justify-between items-center mb-4">
-                            <h3 class="text-xl font-bold">Фаза 3: Полная Автономность</h3>
-                            <span class="text-xs font-bold px-3 py-1 bg-blue-50 text-blue-800 rounded-full">Месяцы 13-24</span>
-                        </div>
-                        <p class="text-gray-600 text-sm mb-4">Мультиагентная система работает 24/7. Дашборд директора в реальном времени. ИИ-тьюторы для всех 191 учеников интегрированы в систему.</p>
-                    </div>
-                </div>
-
+            <div class="scale-in">
+                <img src="assets/digital_twin.png" alt="Цифровой двойник" class="w-full h-auto image-shadow bg-amber-50/20 p-4">
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-400 py-12 text-center text-sm">
-        <p class="mb-2">Лаборатория Вертикального Развития • Гимназия им. В.В. Давыдова</p>
-        <p>Синтезировано на базе консилиума нейросетей (Gemini, Claude, GPT-4) • 2026</p>
+    <!-- DIVIDER 3: IMPLEMENTATION -->
+    <section class="divider-slide section-padding">
+        <div class="max-w-4xl mx-auto z-10 fade-up">
+            <h4 class="text-indigo-600 font-bold tracking-widest uppercase mb-4 text-sm">Прагматика</h4>
+            <h2 class="text-3xl md:text-4xl font-semibold leading-tight text-gray-900 mb-6">
+                Но как это внедрить, чтобы систему не отторгли в первый же день?
+            </h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                Коллектив боится ИИ, а закон (ФЗ-152) строго охраняет данные детей. Мы не можем построить финальную автономную стадию сразу. Нам нужна эволюция (Nudge Theory).
+            </p>
+        </div>
+    </section>
+
+    <!-- SECTION 3: IMPLEMENTATION PATH -->
+    <section class="section-padding bg-white relative">
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+            <div class="order-2 lg:order-1 scale-in">
+                <img src="assets/implementation.png" alt="Внедрение" class="w-full h-auto image-shadow">
+            </div>
+            <div class="order-1 lg:order-2 fade-up space-y-6">
+                <h2 class="text-4xl font-bold tracking-tight mb-8">Стратегия Миграции</h2>
+                
+                <div class="relative border-l-2 border-gray-100 pl-8 space-y-10">
+                    <div class="relative">
+                        <div class="absolute -left-[41px] bg-white p-2 text-amber-500"><i class="fa-solid fa-circle-play text-xl"></i></div>
+                        <h4 class="text-xl font-bold text-gray-900">Фаза 0: Demo-WOW (1 мес)</h4>
+                        <p class="text-gray-500 mt-2">Используем платные API (Claude 3.5 / GPT-4o) <strong>только на синтезированных/чужих данных</strong>. Директор видит генерацию гранта за 10 минут. Скепсис сломлен.</p>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-[41px] bg-white p-2 text-blue-500"><i class="fa-solid fa-shuffle text-xl"></i></div>
+                        <h4 class="text-xl font-bold text-gray-900">Фаза 1: Теневой маршрут (6 мес)</h4>
+                        <p class="text-gray-500 mt-2">Сборка графовой базы. Сложные задачи идут во внешние сети без имен, локальные — обрабатываются просто.</p>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-[41px] bg-white p-2 text-green-500"><i class="fa-solid fa-server text-xl"></i></div>
+                        <h4 class="text-xl font-bold text-gray-900">Фаза 2: Суверенитет (12 мес)</h4>
+                        <p class="text-gray-500 mt-2">Покупка серверов (на выигранные гранты). Развертывание локальной модели (Llama 3 70B). Полный комплаенс с ФЗ-152.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DIVIDER 4: PHILOSOPHY -->
+    <section class="divider-slide section-padding">
+        <div class="blob blob-1" style="background: #fdf2f8;"></div>
+        <div class="max-w-4xl mx-auto z-10 fade-up">
+            <h4 class="text-rose-500 font-bold tracking-widest uppercase mb-4 text-sm">Самое важное</h4>
+            <h2 class="text-3xl md:text-4xl font-semibold leading-tight text-gray-900 mb-6">
+                ИИ стремится дать готовый ответ.<br>Гимназия учит искать его самому.
+            </h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                Если мы дадим детям обычный ChatGPT, они перестанут думать. Мы должны сломать природу генеративных сетей, чтобы сохранить парадигму развивающего обучения (Система Эльконина-Давыдова).
+            </p>
+        </div>
+    </section>
+
+    <!-- SECTION 4: PHILOSOPHY (DAVYDOV 2.0) -->
+    <section class="section-padding bg-white relative">
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+            <div class="fade-up space-y-6">
+                <h2 class="text-4xl font-bold tracking-tight">Генератор Апории (Давыдов 2.0)</h2>
+                <p class="text-lg text-gray-600 mb-6">
+                    Агент гимназии программно лишен права давать прямые ответы. Вместо этого он использует модифицированный сократический фреймворк:
+                </p>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="p-5 rounded-2xl bg-gray-50 border border-gray-100 hover:border-amber-200 transition">
+                        <h4 class="font-bold text-gray-900 mb-2">1. Эленхус</h4>
+                        <p class="text-sm text-gray-500">Доведение поверхностной идеи ученика до логического абсурда.</p>
+                    </div>
+                    <div class="p-5 rounded-2xl bg-gray-50 border border-gray-100 hover:border-amber-200 transition">
+                        <h4 class="font-bold text-gray-900 mb-2">2. Апория</h4>
+                        <p class="text-sm text-gray-500">Вброс противоречивых фактов, чтобы разрушить шаблон и создать когнитивный тупик.</p>
+                    </div>
+                    <div class="p-5 rounded-2xl bg-gray-50 border border-gray-100 hover:border-amber-200 transition">
+                        <h4 class="font-bold text-gray-900 mb-2">3. Майевтика</h4>
+                        <p class="text-sm text-gray-500">Серия мягких наводящих вопросов.</p>
+                    </div>
+                    <div class="p-5 rounded-2xl bg-gray-50 border border-gray-100 hover:border-amber-200 transition">
+                        <h4 class="font-bold text-gray-900 mb-2">4. Диалектика</h4>
+                        <p class="text-sm text-gray-500">Помощь в сборке нового, сложного понятия из руин старого.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="scale-in">
+                <img src="assets/socratic.png" alt="Сократический диалог" class="w-full h-auto image-shadow">
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-white py-16 text-center">
+        <div class="max-w-2xl mx-auto px-6">
+            <h2 class="text-2xl font-bold mb-4">Начните трансформацию</h2>
+            <p class="text-gray-400 mb-8">ИИ не заменяет учителя. ИИ возвращает учителю время на то, чтобы быть учителем.</p>
+            <div class="text-sm text-gray-600">
+                <p>&copy; 2026 Гимназия им. В.В. Давыдова • Разработано нейро-консилиумом</p>
+            </div>
+        </div>
     </footer>
 
-    <!-- Init Scripts -->
+    <!-- Intersection Observer Script for Animations -->
     <script>
-        mermaid.initialize({ 
-            startOnLoad: true,
-            theme: 'default',
-            themeVariables: {
-                primaryColor: '#f3f4f6',
-                primaryTextColor: '#1e3a8a',
-                primaryBorderColor: '#cbd5e1',
-                lineColor: '#f59e0b',
-                secondaryColor: '#fef3c7',
-                tertiaryColor: '#eff6ff'
-            }
-        });
-
-        // Simple Intersection Observer for scroll animations
         document.addEventListener("DOMContentLoaded", function() {
-            const sections = document.querySelectorAll('.section-fade');
-            
-            const observer = new IntersectionObserver((entries) => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // Animate only once
                     }
                 });
-            }, { threshold: 0.1 });
+            }, observerOptions);
 
-            sections.forEach(section => {
-                observer.observe(section);
+            document.querySelectorAll('.fade-up, .fade-in, .scale-in').forEach((el) => {
+                observer.observe(el);
             });
         });
     </script>
