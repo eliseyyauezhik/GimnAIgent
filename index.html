@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Презентация: Архитектор Развития</title>
+    <title>Архитектура Развития: ИИ-система Гимназии</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -17,47 +17,31 @@
             scroll-behavior: smooth;
         }
 
-        /* Fluid Typography & Spacing */
-        .section-padding { padding: 8rem 2rem; }
+        .section-padding { padding: 6rem 2rem; }
         @media (max-width: 768px) { .section-padding { padding: 4rem 1.5rem; } }
 
-        /* Animations */
         .fade-up {
             opacity: 0;
-            transform: translateY(40px);
+            transform: translateY(30px);
             transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .fade-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .fade-in {
-            opacity: 0;
-            transition: opacity 1.5s ease-out;
-        }
-        .fade-in.visible { opacity: 1; }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
 
         .scale-in {
             opacity: 0;
-            transform: scale(0.95);
+            transform: scale(0.97);
             transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .scale-in.visible {
-            opacity: 1;
-            transform: scale(1);
-        }
+        .scale-in.visible { opacity: 1; transform: scale(1); }
 
-        /* Decorative Elements */
         .glass-card {
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(0, 0, 0, 0.05);
-            border-radius: 1.5rem;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
             transition: transform 0.3s ease;
         }
-        .glass-card:hover { transform: translateY(-5px); }
 
         .divider-slide {
             background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
@@ -67,14 +51,16 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            min-height: 50vh;
+            min-height: 40vh;
+            border-top: 1px solid rgba(0,0,0,0.03);
+            border-bottom: 1px solid rgba(0,0,0,0.03);
         }
 
         .blob {
             position: absolute;
             border-radius: 50%;
             filter: blur(80px);
-            opacity: 0.5;
+            opacity: 0.4;
             z-index: 0;
             animation: float 10s infinite ease-in-out alternate;
         }
@@ -83,91 +69,92 @@
 
         @keyframes float {
             0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(30px, 50px) scale(1.1); }
+            100% { transform: translate(20px, 30px) scale(1.05); }
         }
 
         .image-shadow {
-            border-radius: 1.5rem;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            border-radius: 1rem;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
         }
+
+        h2, h3 { letter-spacing: -0.02em; }
+        .text-academic { color: #374151; font-size: 1.05rem; line-height: 1.7; }
+        .keyword { font-weight: 600; color: #1e3a8a; }
     </style>
 </head>
-<body class="antialiased selection:bg-amber-200 selection:text-black">
+<body class="antialiased selection:bg-blue-100 selection:text-blue-900">
 
     <!-- HERO SECTION -->
-    <section class="min-h-screen flex items-center justify-center relative bg-white pb-20 pt-10">
+    <section class="min-h-screen flex items-center justify-center relative bg-white pb-16 pt-10">
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
         
-        <div class="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10 w-full mb-20 fade-up visible">
-            <div class="space-y-8">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-blue-600 text-sm font-semibold tracking-wide border border-blue-100">
-                    <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
-                    Проект 2026
+        <div class="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10 w-full mb-10 fade-up visible">
+            <div class="space-y-6">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded bg-gray-50 text-gray-600 text-xs font-semibold tracking-wider uppercase border border-gray-200">
+                    Аналитический отчет · Концепт проекта
                 </div>
-                <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight">
-                    Архитектор<br>
-                    <span class="text-amber-500">Развития</span>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.15] text-gray-900">
+                    Мультиагентная ИИ-система <br>
+                    <span class="text-blue-800">«Архитектор Развития»</span>
                 </h1>
-                <p class="text-xl text-gray-500 leading-relaxed font-light max-w-lg">
-                    Мультиагентная ИИ-система для Гимназии им. В.В. Давыдова. Невидимый слой управления, освобождающий время для живого мышления.
+                <p class="text-xl text-gray-600 font-light leading-relaxed max-w-lg pb-4">
+                    Проектирование децентрализованной алгоритмической инфраструктуры для поддержки процессов развития и управления в Гимназии им. В.В. Давыдова.
                 </p>
-                <div class="pt-4">
-                    <a href="#logic-1" class="inline-flex items-center gap-3 px-8 py-4 bg-gray-900 text-white rounded-full font-medium hover:bg-gray-800 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1 duration-300">
-                        Погрузиться в логику <i class="fa-solid fa-arrow-down animate-bounce"></i>
+                <div class="pt-2">
+                    <a href="#logic-1" class="inline-flex items-center gap-3 px-6 py-3 bg-blue-900 text-white rounded font-medium hover:bg-blue-800 transition-colors shadow-sm">
+                        Перейти к исследованию <i class="fa-solid fa-arrow-down"></i>
                     </a>
                 </div>
             </div>
             <div class="relative scale-in visible">
-                <img src="assets/hero.png" alt="Холистическое видение" class="w-full h-auto image-shadow object-cover bg-white p-2">
+                <img src="assets/hero.png" alt="Холистическое видение интеграции ИИ" class="w-full h-auto image-shadow object-cover bg-white p-2">
             </div>
         </div>
     </section>
 
-    <!-- DIVIDER 1: THE PROBLEM -->
+    <!-- DIVIDER 1: CONTEXT -->
     <section id="logic-1" class="divider-slide section-padding">
         <div class="max-w-4xl mx-auto z-10 fade-up">
-            <h4 class="text-amber-500 font-bold tracking-widest uppercase mb-4 text-sm">Введение в проблематику</h4>
-            <h2 class="text-3xl md:text-4xl font-semibold leading-tight text-gray-900 mb-6">
-                Как управлять сложной образовательной средой без выгорания?
+            <h4 class="text-blue-800 font-bold tracking-widest uppercase mb-4 text-xs">Раздел I. Обоснование интеграции</h4>
+            <h2 class="text-2xl md:text-3xl font-semibold leading-tight text-gray-900 mb-6">
+                Контекст глобальной цифровой трансформации образования
             </h2>
-            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                Современная школа — это хаос данных, расписаний и грантов. Традиционные ИИ (ChatGPT) работают как "всезнающие оракулы" и быстро теряют контекст в сложных процессах. Нам нужен другой подход.
+            <p class="text-academic mx-auto text-left">
+                Интеграция систем искусственного интеллекта в образовательную среду требует преодоления фундаментального вызова: адаптации к алгоритмической реальности без потери гуманистической парадигмы. В условиях системы <span class="keyword">развивающего обучения Д.Б. Эльконина — В.В. Давыдова</span>, требующей от учащихся конструирования знаний через решение учебно-практических задач, традиционные методы трансляции знаний алгоритмами неэффективны. 
+                <br><br>
+                Предлагаемая концепция рассматривает создание ИИ-системы не как замену педагогической функции, а как инфраструктурный слой, переносящий на себя процессы мониторинга, скаутинга, анализа микроданных и бюрократической отчетности, минимизируя когнитивную перегрузку педагогического состава.
             </p>
         </div>
     </section>
 
     <!-- SECTION 1: ARCHITECTURE -->
     <section class="section-padding bg-white relative">
-        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
-            <div class="order-2 lg:order-1 scale-in">
-                <img src="assets/architecture.png" alt="Архитектура" class="w-full h-auto image-shadow bg-blue-50/30 p-4">
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-start">
+            <div class="order-2 lg:order-1 scale-in sticky top-24">
+                <img src="assets/architecture.png" alt="Мультиагентная архитектура" class="w-full h-auto image-shadow border border-gray-100">
             </div>
-            <div class="order-1 lg:order-2 fade-up space-y-6">
-                <h2 class="text-4xl font-bold tracking-tight">Роевой Интеллект</h2>
-                <p class="text-lg text-gray-600">Мы разделяем задачи (LangGraph + CrewAI). Один агент не может делать всё. Мы создаем оркестр:</p>
+            <div class="order-1 lg:order-2 fade-up space-y-8">
+                <div>
+                    <h2 class="text-3xl font-bold tracking-tight mb-4 text-gray-900">Мультиагентная архитектура оркестрации</h2>
+                    <p class="text-academic mb-6">
+                        Монолитные LLM (Large Language Models) демонстрируют значительную деградацию контекста при решении комплексных междисциплинарных задач. Проектируемая архитектура базируется на парадигме <span class="keyword">Multi-Agent Systems (MAS)</span>, декомпозирующей глобальную цель между узкоспециализированными агентами.
+                    </p>
+                </div>
                 
-                <div class="space-y-4 pt-4">
-                    <div class="glass-card p-6 flex gap-4 items-start">
-                        <div class="w-12 h-12 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center shrink-0"><i class="fa-solid fa-satellite-dish"></i></div>
-                        <div>
-                            <h3 class="font-bold text-gray-900 text-lg">Агент-Скаут</h3>
-                            <p class="text-gray-500 text-sm mt-1">Осматривает внешний мир, ищет гранты, анализирует новые законы.</p>
-                        </div>
+                <div class="space-y-4">
+                    <div class="p-6 bg-gray-50 border border-gray-100 rounded-lg">
+                        <h3 class="font-bold text-gray-900 text-lg mb-2">Оркестратор (LangGraph)</h3>
+                        <p class="text-academic text-sm">Обеспечивает графовую маршрутизацию запросов (Stateful Execution), поддержку циклов, семантическое хранение исторической документации через векторные базы данных (PostgreSQL/Qdrant) и соблюдение системных ограничений (guardrails).</p>
                     </div>
-                    <div class="glass-card p-6 flex gap-4 items-start">
-                        <div class="w-12 h-12 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center shrink-0"><i class="fa-solid fa-chart-line"></i></div>
-                        <div>
-                            <h3 class="font-bold text-gray-900 text-lg">Агент-Аналитик</h3>
-                            <p class="text-gray-500 text-sm mt-1">Ищет аномалии внутри школы, прогнозирует когнитивную нагрузку.</p>
-                        </div>
-                    </div>
-                    <div class="glass-card p-6 flex gap-4 items-start">
-                        <div class="w-12 h-12 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center shrink-0"><i class="fa-solid fa-chess-knight"></i></div>
-                        <div>
-                            <h3 class="font-bold text-gray-900 text-lg">Агент-Стратег</h3>
-                            <p class="text-gray-500 text-sm mt-1">Синтезирует инсайты, формирует заявки и расписания.</p>
-                        </div>
+                    <div class="p-6 bg-gray-50 border border-gray-100 rounded-lg">
+                        <h3 class="font-bold text-gray-900 text-lg mb-2">Агентные кластеры (CrewAI)</h3>
+                        <p class="text-academic text-sm">Отвечают за выполнение конкретных задач внутри узлов графа. Включают ролевые модели:</p>
+                        <ul class="list-disc pl-5 mt-3 space-y-2 text-sm text-gray-600">
+                            <li><span class="font-semibold text-gray-800">Агент-Скаут:</span> Непрерывный мониторинг внешней среды, грантовых платформ, государственных реестров и изменений нормативной базы.</li>
+                            <li><span class="font-semibold text-gray-800">Агент-Аналитик:</span> Обработка сырых данных цифрового двойника, выявление аномалий и предиктивная аналитика состояния стейкхолдеров.</li>
+                            <li><span class="font-semibold text-gray-800">Агент-Стратег:</span> Синтез данных, генерация проектов управленческих решений, грантовых заявок и индивидуальных сценариев.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -176,13 +163,13 @@
 
     <!-- DIVIDER 2: DIGITAL TWIN -->
     <section class="divider-slide section-padding">
-        <div class="max-w-4xl mx-auto z-10 fade-up">
-            <h4 class="text-blue-600 font-bold tracking-widest uppercase mb-4 text-sm">Слой Данных</h4>
-            <h2 class="text-3xl md:text-4xl font-semibold leading-tight text-gray-900 mb-6">
-                Чтобы лечить организм, нужно знать его анатомию.
+        <div class="max-w-4xl mx-auto z-10 fade-up text-left">
+            <h4 class="text-blue-800 font-bold tracking-widest uppercase mb-4 text-xs text-center">Раздел II. Информационная модель</h4>
+            <h2 class="text-2xl md:text-3xl font-semibold leading-tight text-gray-900 mb-6 text-center">
+                Образовательный цифровой двойник
             </h2>
-            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                Рой агентов бесполезен без четкой карты реальности. Поэтому фундамент системы — это полностью оцифрованная структура связей гимназии.
+            <p class="text-academic mx-auto">
+                Основанием для работы мультиагентной системы является создание <span class="keyword">образовательного цифрового двойника (Digital Twin)</span>. Он представляет собой не просто статичную схему, а интегрированную вероятностную симуляцию с двунаправленным потоком данных. Гимназия проецируется в систему как динамический <span class="keyword">граф сущностей (Entity-Relationship Graph)</span>, что позволяет объединить разрозненные данные о педагогических процессах, инфраструктуре и человеческом капитале в единую семантическую (Neo4j) и векторную сеть.
             </p>
         </div>
     </section>
@@ -192,64 +179,68 @@
         <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
             <div class="fade-up space-y-8">
                 <div>
-                    <h2 class="text-4xl font-bold tracking-tight mb-4">Цифровой Двойник</h2>
-                    <p class="text-lg text-gray-600">
-                        Гимназия (191 ученик, 31 педагог) представлена как динамический двунаправленный граф. Система видит не просто оценки, а связи. Изменение расписания учителя физики мгновенно просчитывается на предмет выгорания конкретных классов.
+                    <h2 class="text-3xl font-bold tracking-tight mb-4">Предиктивная аналитика и мониторинг</h2>
+                    <p class="text-academic">
+                        Интеграция графа сущностей с алгоритмами автоматизированного машинного обучения (AutoML) создает возможности для предиктивной аналитики. Система способна алгоритмически выявлять косвенные связи: например, прогнозировать каскадные эффекты изменения расписания отдельных преподавателей или выявлять поведенческие паттерны, предшествующие профессиональному выгоранию, инициируя мягкие корректировки.
                     </p>
                 </div>
                 
                 <div class="h-px bg-gray-200 w-full"></div>
                 
                 <div>
-                    <h2 class="text-4xl font-bold tracking-tight mb-4">Непрерывный Фандрайзинг</h2>
-                    <p class="text-lg text-gray-600">
-                        Собрав данные двойника, <span class="font-semibold text-amber-600">Агент-Скаут</span> автономно "матчит" профиль гимназии с порталом гранты.рф. Система сама находит возможности и кладет директору на стол готовый черновик грантовой заявки.
+                    <h2 class="text-3xl font-bold tracking-tight mb-4">Автономный грантовый скаутинг</h2>
+                    <p class="text-academic">
+                        Проектируемый Агент-Скаут реализует концепцию Continuous Fundraising. Осуществляя парсинг платформ финансовой поддержки (например, гранты.рф) с использованием семантического ядра, настроенного на профиль гимназии (развивающее обучение, ИИ-инновации), алгоритм оценивает вероятность успешной заявки сопоставлением с цифровым двойником. На базе этих данных Агент-Стратег может строить первичный драфт проекта для последующей верификации руководством.
                     </p>
                 </div>
             </div>
             <div class="scale-in">
-                <img src="assets/digital_twin.png" alt="Цифровой двойник" class="w-full h-auto image-shadow bg-amber-50/20 p-4">
+                <img src="assets/digital_twin.png" alt="Структура цифрового двойника" class="w-full h-auto image-shadow border border-gray-100">
             </div>
         </div>
     </section>
 
     <!-- DIVIDER 3: IMPLEMENTATION -->
     <section class="divider-slide section-padding">
-        <div class="max-w-4xl mx-auto z-10 fade-up">
-            <h4 class="text-indigo-600 font-bold tracking-widest uppercase mb-4 text-sm">Прагматика</h4>
-            <h2 class="text-3xl md:text-4xl font-semibold leading-tight text-gray-900 mb-6">
-                Но как это внедрить, чтобы систему не отторгли в первый же день?
+        <div class="max-w-4xl mx-auto z-10 fade-up text-left">
+            <h4 class="text-blue-800 font-bold tracking-widest uppercase mb-4 text-xs text-center">Раздел III. Безопасность и внедрение</h4>
+            <h2 class="text-2xl md:text-3xl font-semibold leading-tight text-gray-900 mb-6 text-center">
+                Защита данных и стратегия миграции
             </h2>
-            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                Коллектив боится ИИ, а закон (ФЗ-152) строго охраняет данные детей. Мы не можем построить финальную автономную стадию сразу. Нам нужна эволюция (Nudge Theory).
+            <p class="text-academic mx-auto">
+                Ключевой риск использования систем искусственного интеллекта в образовании РФ — нормативные ограничения в сфере обработки персональных данных (ФЗ-152, ФЗ-149). Использование зарубежных проприетарных API юридически недопустимо для реальных данных. Кроме того, прямое внедрение технологически сложных локальных ИИ-решений сталкивается с организационным сопротивлением персонала.
             </p>
         </div>
     </section>
 
     <!-- SECTION 3: IMPLEMENTATION PATH -->
     <section class="section-padding bg-white relative">
-        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
-            <div class="order-2 lg:order-1 scale-in">
-                <img src="assets/implementation.png" alt="Внедрение" class="w-full h-auto image-shadow">
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-start">
+            <div class="order-2 lg:order-1 scale-in sticky top-24">
+                <img src="assets/implementation.png" alt="Прагматика внедрения" class="w-full h-auto image-shadow border border-gray-100">
             </div>
-            <div class="order-1 lg:order-2 fade-up space-y-6">
-                <h2 class="text-4xl font-bold tracking-tight mb-8">Стратегия Миграции</h2>
+            <div class="order-1 lg:order-2 fade-up space-y-8">
                 
-                <div class="relative border-l-2 border-gray-100 pl-8 space-y-10">
+                <h2 class="text-3xl font-bold tracking-tight text-gray-900 mb-6">Этапы развертывания системы</h2>
+                <p class="text-academic mb-8">
+                    Утверждается поэтапная стратегия внедрения, опирающаяся на концепции поведенческой экономики (<span class="keyword">Nudge Theory</span>) и снижение когнитивной нагрузки на этапе адаптации коллектива.
+                </p>
+
+                <div class="relative border-l border-gray-200 pl-8 space-y-10">
                     <div class="relative">
-                        <div class="absolute -left-[41px] bg-white p-2 text-amber-500"><i class="fa-solid fa-circle-play text-xl"></i></div>
-                        <h4 class="text-xl font-bold text-gray-900">Фаза 0: Demo-WOW (1 мес)</h4>
-                        <p class="text-gray-500 mt-2">Используем платные API (Claude 3.5 / GPT-4o) <strong>только на синтезированных/чужих данных</strong>. Директор видит генерацию гранта за 10 минут. Скепсис сломлен.</p>
+                        <div class="absolute -left-[37px] w-3 h-3 bg-gray-300 rounded-full mt-1.5 border-4 border-white box-content"></div>
+                        <h4 class="text-lg font-bold text-gray-900">Фаза 1: Демонстрация потенциала (Proprietary First)</h4>
+                        <p class="text-academic text-sm mt-2">Использование облачных API (GPT-4o, Claude) исключительно на синтетических, обезличенных данных. Основная цель этапа — демонстрация валидности концепции руководству, отладка графовой архитектуры LangGraph и первичная адаптация педагогического состава без правовых рисков.</p>
                     </div>
                     <div class="relative">
-                        <div class="absolute -left-[41px] bg-white p-2 text-blue-500"><i class="fa-solid fa-shuffle text-xl"></i></div>
-                        <h4 class="text-xl font-bold text-gray-900">Фаза 1: Теневой маршрут (6 мес)</h4>
-                        <p class="text-gray-500 mt-2">Сборка графовой базы. Сложные задачи идут во внешние сети без имен, локальные — обрабатываются просто.</p>
+                        <div class="absolute -left-[37px] w-3 h-3 bg-blue-500 rounded-full mt-1.5 border-4 border-white box-content"></div>
+                        <h4 class="text-lg font-bold text-gray-900">Фаза 2: Трансфер и локализация (Гибридный режим)</h4>
+                        <p class="text-academic text-sm mt-2">Внедрение прокси-маршрутизаторов (LiteLLM). Развертывание локальных баз данных для RAG. На этом этапе формируется цифровая онтология школы, а алгоритмы начинают работать с реальной инфраструктурой, строго разделяя конфиденциальные и открытые данные.</p>
                     </div>
                     <div class="relative">
-                        <div class="absolute -left-[41px] bg-white p-2 text-green-500"><i class="fa-solid fa-server text-xl"></i></div>
-                        <h4 class="text-xl font-bold text-gray-900">Фаза 2: Суверенитет (12 мес)</h4>
-                        <p class="text-gray-500 mt-2">Покупка серверов (на выигранные гранты). Развертывание локальной модели (Llama 3 70B). Полный комплаенс с ФЗ-152.</p>
+                        <div class="absolute -left-[37px] w-3 h-3 bg-gray-900 rounded-full mt-1.5 border-4 border-white box-content"></div>
+                        <h4 class="text-lg font-bold text-gray-900">Фаза 3: Суверенитет (Self-Hosted MVP)</h4>
+                        <p class="text-academic text-sm mt-2">Развертывание открытых LLM-моделей (Llama 3 70B, Mistral, Qwen) на собственных аппаратных мощностях гимназии (локальном GPU-кластере). Достижение абсолютного технологического суверенитета и полного соответствия ФЗ-152. Запуск системы в автономный режим эксплуатации.</p>
                     </div>
                 </div>
             </div>
@@ -259,13 +250,13 @@
     <!-- DIVIDER 4: PHILOSOPHY -->
     <section class="divider-slide section-padding">
         <div class="blob blob-1" style="background: #fdf2f8;"></div>
-        <div class="max-w-4xl mx-auto z-10 fade-up">
-            <h4 class="text-rose-500 font-bold tracking-widest uppercase mb-4 text-sm">Самое важное</h4>
-            <h2 class="text-3xl md:text-4xl font-semibold leading-tight text-gray-900 mb-6">
-                ИИ стремится дать готовый ответ.<br>Гимназия учит искать его самому.
+        <div class="max-w-4xl mx-auto z-10 fade-up text-left">
+            <h4 class="text-blue-800 font-bold tracking-widest uppercase mb-4 text-xs text-center">Раздел IV. Педагогическая интеграция</h4>
+            <h2 class="text-2xl md:text-3xl font-semibold leading-tight text-gray-900 mb-6 text-center">
+                Конфликт парадигм и концепт «Давыдов 2.0»
             </h2>
-            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                Если мы дадим детям обычный ChatGPT, они перестанут думать. Мы должны сломать природу генеративных сетей, чтобы сохранить парадигму развивающего обучения (Система Эльконина-Давыдова).
+            <p class="text-academic mx-auto">
+                Интеллектуальный вызов проекта заключается в разрешении конфликта между базовой механикой языковых моделей (предоставление быстрых, исчерпывающих ответов) и методологией Эльконина-Давыдова, запрещающей предоставление готового знания в обход самостоятельного выдвижения гипотез учащимися. 
             </p>
         </div>
     </section>
@@ -274,43 +265,46 @@
     <section class="section-padding bg-white relative">
         <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
             <div class="fade-up space-y-6">
-                <h2 class="text-4xl font-bold tracking-tight">Генератор Апории (Давыдов 2.0)</h2>
-                <p class="text-lg text-gray-600 mb-6">
-                    Агент гимназии программно лишен права давать прямые ответы. Вместо этого он использует модифицированный сократический фреймворк:
+                <h2 class="text-3xl font-bold tracking-tight text-gray-900">Инверсия ИИ: Модифицированный сократический фреймворк</h2>
+                <p class="text-academic mb-6">
+                    Для применения в образовательном процессе гимназии, система программируется не как оракул, а как <span class="keyword">«генератор апории»</span> (когнитивного тупика), функционирующий на базе фреймворка RSKIF (Revisited Socratic Knowledge Interaction Framework) через фазовую маршрутизацию диалога:
                 </p>
                 
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div class="p-5 rounded-2xl bg-gray-50 border border-gray-100 hover:border-amber-200 transition">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
+                    <div class="border-t-2 border-gray-200 pt-4">
                         <h4 class="font-bold text-gray-900 mb-2">1. Эленхус</h4>
-                        <p class="text-sm text-gray-500">Доведение поверхностной идеи ученика до логического абсурда.</p>
+                        <p class="text- академический text-sm text-gray-600">Критическое опровержение. При получении поверхностного, хотя и верного ответа, ИИ задает контрвопрос, выявляющий слабые предпосылки рассуждений ученика.</p>
                     </div>
-                    <div class="p-5 rounded-2xl bg-gray-50 border border-gray-100 hover:border-amber-200 transition">
+                    <div class="border-t-2 border-gray-200 pt-4">
                         <h4 class="font-bold text-gray-900 mb-2">2. Апория</h4>
-                        <p class="text-sm text-gray-500">Вброс противоречивых фактов, чтобы разрушить шаблон и создать когнитивный тупик.</p>
+                        <p class="text-academic text-sm text-gray-600">Конструктивное сомнение. Преднамеренное введение в дискуссию неочевидных фактов, разрушающих выстроенную логику для стимуляции абстрактного мышления.</p>
                     </div>
-                    <div class="p-5 rounded-2xl bg-gray-50 border border-gray-100 hover:border-amber-200 transition">
+                    <div class="border-t-2 border-gray-200 pt-4">
                         <h4 class="font-bold text-gray-900 mb-2">3. Майевтика</h4>
-                        <p class="text-sm text-gray-500">Серия мягких наводящих вопросов.</p>
+                        <p class="text-academic text-sm text-gray-600">Извлечение знания. Инициация серии калиброванных вопросов, направляющих учащихся к самостоятельному формулированию системного принципа.</p>
                     </div>
-                    <div class="p-5 rounded-2xl bg-gray-50 border border-gray-100 hover:border-amber-200 transition">
+                    <div class="border-t-2 border-gray-200 pt-4">
                         <h4 class="font-bold text-gray-900 mb-2">4. Диалектика</h4>
-                        <p class="text-sm text-gray-500">Помощь в сборке нового, сложного понятия из руин старого.</p>
+                        <p class="text-academic text-sm text-gray-600">Коллаборативный синтез. Фасилитация процесса объединения учащимися разрозненных гипотез в единое теоретическое понятие.</p>
                     </div>
                 </div>
             </div>
             <div class="scale-in">
-                <img src="assets/socratic.png" alt="Сократический диалог" class="w-full h-auto image-shadow">
+                <img src="assets/socratic.png" alt="Схема сократического фреймворка" class="w-full h-auto image-shadow border border-gray-100">
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-gray-900 text-white py-16 text-center">
-        <div class="max-w-2xl mx-auto px-6">
-            <h2 class="text-2xl font-bold mb-4">Начните трансформацию</h2>
-            <p class="text-gray-400 mb-8">ИИ не заменяет учителя. ИИ возвращает учителю время на то, чтобы быть учителем.</p>
-            <div class="text-sm text-gray-600">
-                <p>&copy; 2026 Гимназия им. В.В. Давыдова • Разработано нейро-консилиумом</p>
+    <footer class="bg-gray-50 border-t border-gray-100 py-12 text-center mt-10">
+        <div class="max-w-3xl mx-auto px-6">
+            <h2 class="text-xl font-bold mb-4 text-gray-800">Заключение</h2>
+            <p class="text-gray-500 mb-8 text-sm leading-relaxed">
+                Интеграция мультиагентной системы осуществляется в строгом соблюдении принципа «человек-в-контуре» (Human-in-the-loop). Алгоритмическая инфраструктура выступает исключительно в качестве аналитического экзоскелета, усиливающего управленческие и педагогические компетенции команды Гимназии им. В.В. Давыдова.
+            </p>
+            <div class="text-xs text-gray-400 font-mono">
+                <p>Документ-концепт ИИ-архитектуры • 2026</p>
+                <p>Generated by Multi-Model AI Council (Gemini, Perplexity, Grok)</p>
             </div>
         </div>
     </footer>
@@ -318,22 +312,17 @@
     <!-- Intersection Observer Script for Animations -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.15
-            };
-
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                        observer.unobserve(entry.target); // Animate only once
+                        observer.unobserve(entry.target);
                     }
                 });
             }, observerOptions);
 
-            document.querySelectorAll('.fade-up, .fade-in, .scale-in').forEach((el) => {
+            document.querySelectorAll('.fade-up, .scale-in').forEach((el) => {
                 observer.observe(el);
             });
         });
